@@ -1,19 +1,15 @@
-var http = require("http");
-var url = require("url");
-var fs = require("fs");
+//include the event module in my project
+var event = require("events");
 
-http
-  .createServer(function (req, res) {
-    var q = (url = url.parse(req.url, true));
-    var fileName = "." + q.pathname;
-    fs.readFile(fileName, function (err, data) {
-      if (err) {
-        res.writeHead(404, { "Content-Type": "text/html" });
-        return res.end("404 Nout Found");
-      }
-      res.writeHead(200, { "Content-Type": "text/html" });
-      res.write(data);
-      return res.end();
-    });
-  })
-  .listen(8080);
+var eventEmitter = new event.EventEmitter();
+
+//var eventHandler = function(){console.log("iheard screaming")}
+//and eventHandler will passed as a parameter to the function
+
+// "eventEmitter.on" makes the function wait for the event to be fired and it'll be when it fire
+eventEmitter.on("scream", function () {
+  console.log("i heard a screaming");
+});
+
+//emit fires an event
+eventEmitter.emit("scream");
