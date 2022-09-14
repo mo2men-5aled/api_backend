@@ -2,7 +2,9 @@ var http = require("http");
 
 //include the built-in filesystem(fs) module
 var fs = require("fs");
-fs.unlink("test.txt", function (err) {
+
+//to renamefile use the method rename("oldname","newname")
+fs.rename("test.txt", "index.txt", function (err) {
   if (err) throw err;
   console.log("saved");
 });
