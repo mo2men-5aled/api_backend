@@ -1,12 +1,11 @@
-var http = require("http");
+var url = require("url");
+var address = "http://localhost:8080/default.htm?year=2017&month=february";
+var q = url.parse(address, true);
 
-//include the built-in filesystem(fs) module
-var fs = require("fs");
+console.log(q.host); //returns 'localhost:8080'
+console.log(q.pathname); //returns '/default.htm'
+console.log(q.search); //returns '?year=2017&month=february'
 
-//to renamefile use the method rename("oldname","newname")
-fs.rename("test.txt", "index.txt", function (err) {
-  if (err) throw err;
-  console.log("saved");
-});
-//The function passed into the http.createServer() method,
-//will be executed when someone tries to access the computer on port 8080.
+var qdata = q.query; //returns an object: { year: 2017, month: 'february' }
+console.log(qdata.month); //returns 'february'
+console.log(qdata.year); //returns 'february'
