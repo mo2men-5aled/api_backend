@@ -2,7 +2,7 @@ var http = require("http");
 
 //include the built-in filesystem(fs) module
 var fs = require("fs");
-fs.writeFile("test.txt", "plaplaplaplaplaplaplapl", function (err) {
+fs.unlink("test.txt", function (err) {
   if (err) throw err;
   console.log("saved");
 });
