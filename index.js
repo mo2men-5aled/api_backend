@@ -1,12 +1,16 @@
 var http = require("http");
-var url = require("url");
+
+//include the built-in filesystem(fs) module
+var fs = require("fs");
+
 //create a server object:
 http
   .createServer(function (req, res) {
-    res.writeHead(200, { "Content-Type": "text/html" });
-    var q = url.parse(req.url, true).query; //use url module to split the query into readable parts
-    var txt = q.year + " " + q.month + " " + q.day; //their values been given after the domain name http://localhost:8000/?year=2000&month=jun&day=13
-    res.end(txt); //end the response
+    fs.readFile("./index.html", function (err, data) {
+      res.writeHead(200, { "Content-Type": "text/html" });
+      res.write(data); //data returned from the HTML file(index.html)
+      return res.end(); //end the response
+    });
   })
   .listen(8080); //the server object listens on port 8080
 
