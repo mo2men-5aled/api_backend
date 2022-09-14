@@ -2,7 +2,7 @@ var http = require("http");
 
 //include the built-in filesystem(fs) module
 var fs = require("fs");
-fs.appendFile("test.txt", "hello there", function (err) {
+fs.writeFile("test.txt", "plaplaplaplaplaplaplapl", function (err) {
   if (err) throw err;
   console.log("saved");
 });
