@@ -1,15 +1,24 @@
-//include the event module in my project
-var event = require("events");
+var nodemailer = require("nodemailer");
 
-var eventEmitter = new event.EventEmitter();
-
-//var eventHandler = function(){console.log("iheard screaming")}
-//and eventHandler will passed as a parameter to the function
-
-// "eventEmitter.on" makes the function wait for the event to be fired and it'll be when it fire
-eventEmitter.on("scream", function () {
-  console.log("i heard a screaming");
+var transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: "khaledmuhammedmomen@gmail.com",
+    pass: "mo2men@2468",
+  },
 });
 
-//emit fires an event
-eventEmitter.emit("scream");
+var mailOptions = {
+  from: "khaledmuhammedmomen@gmail.com",
+  to: "momenk208@gmail.com",
+  subject: "Sending Email using Node.js",
+  text: "That was easy!",
+};
+
+transporter.sendMail(mailOptions, function (error, info) {
+  if (error) {
+    console.log(error);
+  } else {
+    console.log("Email sent: " + info.response);
+  }
+});
