@@ -166,3 +166,36 @@
         db.close();
     });
 ```
+
+#### Limit the result
+
+> To limit the result in MongoDB, we use the limit() method.
+
+> The limit(number of documents you want) method takes one parameter, a number defining how many documents to return.
+
+```
+    dbo.collection("customers").find().limit(5).toArray(function() {})
+```
+
+### JOIN
+
+> MongoDB is not a relational database, but you can perform a left outer join by using the $lookup stage.
+> The $lookup stage lets you specify which collection you want to join with the current collection, and which fields that should match.
+
+```
+    dbo.collection('orders').aggregate([
+        { $lookup:
+            {
+                from: 'products',
+                localField: 'product_id',
+                foreignField: '_id',
+                as: 'orderdetails'
+            }
+        }
+        ]).toArray(function(err, res) {
+        if (err) throw err;
+        console.log(JSON.stringify(res));
+        db.close();
+    });
+
+```
