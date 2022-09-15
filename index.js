@@ -10,7 +10,7 @@ var con = mysql.createConnection({
 con.connect(function (err) {
   if (err) throw err;
   con.query(
-    "SELECT * FROM customers WHERE address = 'Park Lane 38'",
+    "SELECT * FROM customers WHERE name LIKE 'S%'",
     function (err, result) {
       if (err) throw err;
       console.log(result);
