@@ -9,7 +9,13 @@ var con = mysql.createConnection({
 
 con.connect(function (err) {
   var adr = "Mountain 21";
+
   //var sql = `SELECT * FROM customers WHERE address = "${adr}"`;
+
+  //also you can escape using the "?" in the query and pass the value to the query function
+  // var sql = "SELECT * FROM customers WHERE address = ?";
+  // con.query(sql, [adr], function (err, result) {
+
   var sql = "SELECT * FROM customers WHERE address = " + mysql.escape(adr);
   if (err) throw err;
   con.query(sql, function (err, result) {
