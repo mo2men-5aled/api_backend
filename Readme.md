@@ -53,3 +53,10 @@
         });
     });
 ```
+
+## MongoDB
+
+> In MongoDB, a database is not created until it gets content!
+> A collection in MongoDB is the same as a table in MySQL
+> In MongoDB, a collection is not created until it gets content!
+> A document in MongoDB is the same as a record in MySQL
