@@ -90,3 +90,29 @@
 > if we don't want any other columns you don't want to return other than the id don't set it with 0 that will return error , you have just to delete this property
 
 > if you deleted the id coulmn from the projection it will automatically take the value 1
+
+#### filter the result
+
+> When finding documents in a collection, you can filter the result by using a query object.
+
+```
+     var query = { address: "Park Lane 38" };
+    dbo.collection("customers").find(query).toArray(function(err, result) {
+        if (err) throw err;
+        console.log(result);
+        db.close();
+    });
+```
+
+#### filter with regular expressions
+
+> Regular expressions can only be used to query strings.
+
+```
+    var query = { address: /^S/ };
+    dbo.collection("customers").find(query).toArray(function(err, result) {
+        if (err) throw err;
+        console.log(result);
+        db.close();
+    });
+```
