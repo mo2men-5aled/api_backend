@@ -8,12 +8,12 @@ var con = mysql.createConnection({
 });
 
 con.connect(function (err) {
+  var adr = "Mountain 21";
+  //var sql = `SELECT * FROM customers WHERE address = "${adr}"`;
+  var sql = "SELECT * FROM customers WHERE address = " + mysql.escape(adr);
   if (err) throw err;
-  con.query(
-    "SELECT * FROM customers WHERE name LIKE 'S%'",
-    function (err, result) {
-      if (err) throw err;
-      console.log(result);
-    }
-  );
+  con.query(sql, function (err, result) {
+    if (err) throw err;
+    console.log(result);
+  });
 });

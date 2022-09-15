@@ -37,3 +37,19 @@
         database:"database name"
     })
 ```
+
+> the connect function takes a function that performes the query you passed in the .query() function
+
+```
+    con.connect(function(err) {
+        if (err) throw err;
+        console.log("Connected!");
+        con.query(
+            //any query you want to perform
+            "CREATE DATABASE mydb",
+            function (err, result) {
+            if (err) throw err;
+        console.log("Database created");
+        });
+    });
+```
