@@ -5,9 +5,12 @@ const url =
 MongoClient.connect(url, function (err, db) {
   if (err) throw err;
   var dbo = db.db("mydb");
-  dbo.createCollection("customers", function (err, res) {
-    if (err) throw err;
-    console.log("Collection created");
-    db.close();
-  });
+  dbo
+    .collection("customers")
+    .find({}, { projection: { address: 1 } })
+    .toArray(function (err, result) {
+      if (err) throw err;
+      console.log(result);
+      db.close();
+    });
 });

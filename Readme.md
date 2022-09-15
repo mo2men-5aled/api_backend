@@ -60,3 +60,33 @@
 > A collection in MongoDB is the same as a table in MySQL
 > In MongoDB, a collection is not created until it gets content!
 > A document in MongoDB is the same as a record in MySQL
+> If you try to insert documents in a collection that do not exist, MongoDB will create the collection automatically.
+> In MongoDB we use the find and findOne methods to find data in a collection like SELECT in mySQL
+
+### Find all documents
+
+> No parameters in the find() method gives you the same result as SELECT \* in MySQL.
+
+```
+    dbo.collection("customers").find({}).toArray(function(err, result) {
+        if (err) throw err;
+        console.log(result);
+        db.close();
+    });
+```
+
+### Find Some documents
+
+> The second parameter of the find() method is the projection object that describes which fields to include in the result
+
+```
+     { projection: { _id: 0, name: 1, address: 1 } }
+```
+
+> You are not allowed to specify both 0 and 1 values in the same object (except if one of the fields is the \_id field). If you specify a field with the value 0, all other fields get the value 1, and vice versa:
+
+> id:0 means not to return the id , name = 1 means to return the name in the result also the address
+
+> if we don't want any other columns you don't want to return other than the id don't set it with 0 that will return error , you have just to delete this property
+
+> if you deleted the id coulmn from the projection it will automatically take the value 1
