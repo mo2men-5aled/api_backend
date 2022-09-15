@@ -116,3 +116,24 @@
         db.close();
     });
 ```
+
+> sort the result
+
+```
+    var mysort = { name: 1 };
+    //sort ascending
+```
+
+```
+    var mysort = {name: -1 };
+    //sort descending
+```
+
+#### Deleting a document
+
+> To delete a record, or document as it is called in MongoDB, we use the deleteOne() method.
+> If the query finds more than one document, only the first occurrence is deleted.
+
+#### Deleting more than one document
+
+> To delete more than one document, use the deleteMany() method.
