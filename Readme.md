@@ -137,3 +137,32 @@
 #### Deleting more than one document
 
 > To delete more than one document, use the deleteMany() method.
+
+#### update a document
+
+> You can update a record, or document as it is called in MongoDB, by using the updateOne() method.
+> If the query finds more than one record, only the first occurrence is updated.
+
+```
+    var myquery = { address: "Valley 345" };
+    var newvalues = { $set: {name: "Mickey", address: "Canyon 123" } };
+    dbo.collection("customers").updateOne(myquery, newvalues, function(err, res) {
+        if (err) throw err;
+        console.log("1 document updated");
+        db.close();
+    });
+```
+
+#### Update Many Documents
+
+> To update all documents that meets the criteria of the query, use the updateMany() method.
+
+```
+    var myquery = { address: /^S/ };
+    var newvalues = {$set: {name: "Minnie"} };
+    dbo.collection("customers").updateMany(myquery, newvalues, function(err, res) {
+        if (err) throw err;
+        console.log(res.result.nModified + " document(s) updated");
+        db.close();
+    });
+```

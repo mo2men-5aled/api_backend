@@ -5,10 +5,13 @@ const url =
 MongoClient.connect(url, function (err, db) {
   if (err) throw err;
   var dbo = db.db("mydb");
-  var myquery = { address: /^O/ };
-  dbo.collection("customers").deleteMany(myquery, function (err, obj) {
-    if (err) throw err;
-    console.log("document(s) deleted");
-    db.close();
-  });
+  var myquery = { address: /^S/ };
+  var newvalues = { $set: { name: "Minnie" } };
+  dbo
+    .collection("customers")
+    .updateMany(myquery, newvalues, function (err, res) {
+      if (err) throw err;
+      console.log(" document(s) updated");
+      db.close();
+    });
 });
