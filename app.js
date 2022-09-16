@@ -1,4 +1,4 @@
-const names = require("./names");
-const greet = require("./gretting");
-greet(names.john);
-greet(names.peter);
+var os = require("os");
+
+var user = os.userInfo();
+console.log(user);
