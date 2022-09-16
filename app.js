@@ -1,8 +1,27 @@
-const { readFileSync, writeFileSync } = require("fs");
+const { readFile, writeFile } = require("fs");
 
-const first = readFileSync("./first.txt", "utf8");
-const second = readFileSync("./second.txt", "utf8");
-
-writeFileSync("./first.txt", "i'm the added text", { flag: "a" });
-//this {flag:"a"} means "append" that makes the file system modules add a new text to the file not to override it
-console.log(first, second);
+readFile("./first.txt", "utf8", (err, result) => {
+  if (err) {
+    console.log(err);
+    return;
+  }
+  const first = result;
+  readFile("./second.txt", "utf8", (err, result) => {
+    if (err) {
+      console.log(err);
+      return;
+    }
+    const second = result;
+    writeFile(
+      "./result file.txt",
+      `i'm the first file's text${first}, and i'm the second one ${second}`,
+      (err, result) => {
+        if (err) {
+          console.log(err);
+          return;
+        }
+        console.log(result);
+      }
+    );
+  });
+});
