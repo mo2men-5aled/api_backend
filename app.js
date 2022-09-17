@@ -1,24 +1,15 @@
-const { readFile, writeFile } = require("fs");
-console.log("start");
-readFile("./first.txt", "utf8", (err, result) => {
-  if (err) throw err;
-  const first = result;
-  readFile("./second.txt", "utf8", (err, result) => {
-    if (err) throw err;
-    const second = result;
-    writeFile(
-      "./result file.txt",
-      `i'm the first file's text${first}, and i'm the second one ${second}`,
-      (err, result) => {
-        if (err) throw err;
-        //console.log(result);
-        console.log("done with this task");
-      }
-    );
-  });
-  console.log("ready ot start again");
+const http = require("http");
+const server = http.createServer((req, res) => {
+  if (req.url == "/") {
+    res.write("Hello World :)");
+  }
+  if (req.url == "/about") {
+    res.write("this is the about page");
+  }
+  return res.write(`<div>
+      <div>oops</div>
+      <a href="/">back home</a>
+    </div>`);
 });
 
-//start
-//ready to start again
-//done with this task
+server.listen(5050);
