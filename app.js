@@ -12,10 +12,9 @@ const getText = (path) => {
   });
 };
 
-getText("./test.txt")
-  .then((result) => {
-    console.log(result);
-  })
-  .catch((err) => {
-    console.log(err);
-  });
+const start = async () => {
+  const respones = await getText("./test.txt");
+  console.log(respones);
+};
+
+start();
