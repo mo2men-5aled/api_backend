@@ -1,8 +1,11 @@
-const EventEmitter = require("events");
-const eventEmitter = new EventEmitter();
+const http = require("http");
+const fs = require("fs");
 
-eventEmitter.on("response", () => {
-  console.log("i recieved the event");
-});
-
-eventEmitter.emit("response");
+http
+  .createServer(function (req, res) {
+    const stream = fs.createReadStream("./bigData.txt", "utf8");
+    stream.on("open", () => {
+      stream.pipe(res);
+    });
+  })
+  .listen(5000);
