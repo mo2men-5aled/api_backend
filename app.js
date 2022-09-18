@@ -13,8 +13,12 @@ const getText = (path) => {
 };
 
 const start = async () => {
-  const respones = await getText("./test.txt");
-  console.log(respones);
+  try {
+    const respones = await getText("./test.txt");
+    console.log(respones);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 start();
