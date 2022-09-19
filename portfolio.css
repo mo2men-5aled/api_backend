@@ -1,0 +1,85 @@
+.img {
+  /* The image used */
+  background-image: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)),
+    url("./images/17.gif");
+  height: 100%;
+  width: 100%;
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-size: cover;
+}
+
+/* Position the nav-bar container inside the image */
+.container {
+  position: absolute;
+  margin: 20px;
+  width: 100%;
+}
+
+/*Upper Navbar*/
+.topnav li {
+  color: #fff;
+  list-style: none;
+  display: inline-block;
+  padding-right: 20px;
+}
+
+/* Place text in the middle of the image */
+.hero-text {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: medium;
+}
+
+.btn {
+  background-color: aquamarine;
+}
+
+/*mid navbar*/
+.nav {
+  padding-top: 10px;
+  justify-content: center;
+  background-color: rgba(60, 148, 231, 0.473);
+}
+
+/*nav body*/
+#nav-tabContent {
+  background-color: #fff;
+}
+
+/*body content position*/
+.row {
+  justify-content: center;
+  display: flex;
+  margin-right: 0px;
+  margin-bottom: 50px;
+}
+
+.card {
+  margin-top: 30px;
+  border-color: rgba(60, 148, 231, 0.473);
+}
+
+.card-body {
+  text-align: center;
+}
+
+#carrd {
+  margin-left: 1px;
+}
+
+#nav-contact {
+  justify-content: center;
+}
+
+.undertitle_bar {
+  width: 300px;
+  height: 1.5px;
+  background-color: rgba(60, 148, 231, 0.473);
+  margin: auto;
+  justify-content: center;
+}
