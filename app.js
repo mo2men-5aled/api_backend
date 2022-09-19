@@ -1,9 +1,10 @@
 const express = require("express");
 const app = express();
-const logger = require("./logger.js");
+const logger = require("./logger");
+const auth = require("./auth");
 
 //to add  that middleware to all methodes you have
-app.use("/api", logger);
+app.use([logger, auth]);
 
 app.get("/", (req, res) => {
   res.send("Home Page");
