@@ -26,3 +26,30 @@
 ---
 
 > the pipe() methode: used to attach a Writable stream to the readable stream so that it consequently switches into flowing mode and then pushes all the data that it has to the attached Writable.
+
+### MiddleWare
+
+> req -> middleware -> res
+> when working with middleware you must must must must must pass the next() methode into that middleware to end the request-response cycle and head to the next middleware
+
+- middleware example
+
+```
+        const logger = (req, res, next) => {
+        const method = req.method;
+        const url = req.url;
+        const time = new Date().getFullYear();
+        console.log(method, url, time);
+        next();
+    };
+```
+
+> when the middleware passed to the method it is automatically takes the res and the req tha's belongs to that method
+
+```
+    app.get("/", logger, (req, res) => {
+        res.send("Home Page");
+    });
+```
+
+>
