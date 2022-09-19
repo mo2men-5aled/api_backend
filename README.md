@@ -52,4 +52,13 @@
     });
 ```
 
->
+> app.use(middleware Name) to avoid adding it manually to all the methods you have, it will automatically add it to all of them
+> if you want to add that middle ware to all the methodes you have so apply that app.use at the top of the project , if there is a methode before it that middleware will not apply on that methode
+
+> if you want to apply the middleware to a specific route, you can add a path in the app.use methode before the middleware name
+
+```
+    app.use("/api", logger);
+```
+
+- here the middleware will be applied only to all the routes on after the path /api
