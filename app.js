@@ -2,7 +2,10 @@ const express = require("express");
 const app = express();
 let { people } = require("./data");
 
+//static assets
 app.use(express.static("./methods-public"));
+
+//parsing from data
 app.use(express.urlencoded({ extended: false }));
 
 app.get("/api/people", (req, res) => {
