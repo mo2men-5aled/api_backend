@@ -1,27 +1,23 @@
 const express = require("express");
 const app = express();
-const morgan = require("morgan");
-const logger = require("./logger");
-const auth = require("./auth");
+let { people } = require("./data");
 
-//to add  that middleware to all methodes you have
-app.use(morgan("tiny"));
+app.use(express.static("./methods-public"));
+app.use(express.urlencoded({ extended: false }));
 
-app.get("/", (req, res) => {
-  res.send("Home Page");
+app.get("/api/people", (req, res) => {
+  res.status(200).json({ success: true, data: people });
 });
 
-app.get("/about", (req, res) => {
-  res.send("About Page");
+app.post("/login", (req, res) => {
+  const { name } = req.body;
+
+  if (name) {
+    return res.status(200).send(`Welcome ${name}`);
+  }
+  res.status(401).send("Please provide credintials");
 });
 
-app.get("/api/products", (req, res) => {
-  res.send("About Page");
-});
-
-app.get("/api/v1", (req, res) => {
-  res.send("About Page");
-});
 app.listen(5000, () => {
   console.log("app is listening on port 5000");
 });
