@@ -671,6 +671,7 @@
     "normalize-path": "^3.0.0",
     "normalize-range": "^0.1.2",
     "normalize-url": "^3.3.0",
+    "now": "^21.0.1",
     "npm-run-path": "^2.0.2",
     "nth-check": "^2.1.1",
     "num2fraction": "^1.2.2",
