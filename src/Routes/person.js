@@ -15,4 +15,8 @@ router.get("/person/:name", (req, res) => {
   res.send(`You have requested a person ${req.params.name}`); //thomas
 });
 
+router.get("/error", (req, res) => {
+  throw new Error("this is a forced error");
+});
+
 module.exports = router;
