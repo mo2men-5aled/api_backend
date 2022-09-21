@@ -1129,7 +1129,7 @@
     "yargs-parser": "^9.0.2"
   },
   "scripts": {
-    "start": "node src/index.js"
+    "start": "nodemon src/index.js"
   },
   "repository": {
     "type": "git",
