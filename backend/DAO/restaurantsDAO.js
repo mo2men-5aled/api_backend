@@ -19,11 +19,12 @@ export default class RestaurantsDAO {
     }
   }
 
+  //restaurants contains all the restaurants data from db
   static async getRestaurants({
     filters = null,
     page = 0,
-    restaurantsPerPage = 10,
-  } = {}) {
+    restaurantsPerPage = 20,
+  }) {
     let query;
     if (filters) {
       if ("name" in filters) {
@@ -56,6 +57,7 @@ export default class RestaurantsDAO {
       return { restaurantsList: [], totalNumRestaurants: 0 };
     }
   }
+  //---------------------------------------------------------
 
   static async getRestaurantByID(id) {
     try {
@@ -75,13 +77,13 @@ export default class RestaurantsDAO {
               {
                 $match: {
                   $expr: {
-                    $eq: ["$resturant_id", "$$id"],
+                    $eq: ["$restaurant_id", "$$id"],
                   },
                 },
               },
               {
                 $sort: {
-                  data: -1,
+                  date: -1,
                 },
               },
             ],
@@ -96,11 +98,10 @@ export default class RestaurantsDAO {
       ];
       return await restaurants.aggregate(pipeline).next();
     } catch (e) {
-      console.error(`Something went Wrong in getRestaurantByID ${e}`);
+      console.error(`Something went wrong in getRestaurantByID: ${e}`);
       throw e;
     }
   }
-
   static async getCuisines() {
     let cuisines = [];
     try {

@@ -1,9 +1,9 @@
 import ReviewsDAO from "../DAO/reviewsDAO.js";
 
-export default class ReviewController {
+export default class ReviewsController {
   static async apiPostReview(req, res, next) {
     try {
-      const restaurantID = req.body.restaurant_id;
+      const restaurantId = req.body.restaurant_id;
       const review = req.body.text;
       const userInfo = {
         name: req.body.name,
@@ -11,13 +11,13 @@ export default class ReviewController {
       };
       const date = new Date();
 
-      const reviewResponse = await ReviewsDAO.addReview(
-        restaurantID,
+      const ReviewResponse = await ReviewsDAO.addReview(
+        restaurantId,
         userInfo,
         review,
         date
       );
-      res.json({ status: "success" });
+      res.json(ReviewResponse);
     } catch (e) {
       res.status.json({ error: e.message });
     }
@@ -26,13 +26,12 @@ export default class ReviewController {
   static async apiUpdateReview(req, res, next) {
     try {
       const reviewId = req.body.review_id;
-      const userId = req.body.user_id;
       const text = req.body.text;
       const date = new Date();
 
       const reviewResponse = await ReviewsDAO.updateReview(
         reviewId,
-        userId,
+        req.body.user_id,
         text,
         date
       );
